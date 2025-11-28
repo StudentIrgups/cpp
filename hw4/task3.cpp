@@ -5,7 +5,7 @@ int main() {
     int num{};
     std::cin >> num;
     for (int i = 1; i < 11; i++) {
-        std::cout << i << " * " << num << " = " << i * 7 << std::endl;
+        std::cout << i << " * " << num << " = " << i * num << std::endl;
     }
     std::cout << "\n\n";
     return 0;
