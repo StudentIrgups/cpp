@@ -7,10 +7,10 @@
 
 ![alt text](images/2.png)
 
-# Task 3
+# Task 3 recursion
 
 ![alt text](images/3.png)
 
-# Task 4
+# Task 3 cycle
 
-![alt text](images/3.png)
+![alt text](images/4.png)
