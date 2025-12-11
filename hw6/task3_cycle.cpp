@@ -1,17 +1,28 @@
 #include <iostream>
-int main () {
-	std::cout << "Введите число: ";
-	int n = 0;
-	std::cin >> n;
 
-	long long mass[n]{0};
-	mass[1] = 1;
-	for (int i = 2; i < n; ++i)
-		mass[i] = mass[i-2] + mass[i-1];
+int main() {
+    int n;
+    std::cout << "Введите число: ";
+    std::cin >> n;
 
-	std::cout << "Числа Фибоначчи: ";
-	for (int i = 0; i < n; ++i)
-		std::cout << mass[i] << " ";
-	std::cout << std::endl;
-	return 0;
+    long long x = 0, y = 1, nextx = 0;
+
+    std::cout << "Числа Фибоначчи: ";
+
+    for (int i = 1; i <= n; ++i) {
+        if (i == 1) {
+            std::cout << x << " ";
+            continue;
+        }
+        if (i == 2) {
+            std::cout << y << " ";
+            continue;
+        }
+        nextx = x + y;
+        x = y;
+        y = nextx;
+        std::cout << nextx << " ";
+    }
+    std::cout << std::endl;
+    return 0;
 }
