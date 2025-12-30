@@ -8,7 +8,9 @@ int main(int argc, char** argv)
         int n{}, m{};
         file >> n;
         file >> m;
-        int mass[n][m]{};
+        int ** mass = new int*[n];
+        for (int i = 0; i < n; ++i)
+            mass[i] = new int[m];
         int i = 0, j = 0;
         while (file >> mass[i][j]) {
             if (j == m - 1) {
@@ -25,6 +27,9 @@ int main(int argc, char** argv)
             std::cout << std::endl;
         }
         file.close();
+        for (int i = 0; i < n; ++i)
+            delete[] mass[i];
+        delete[] mass;
     }    
 }
 

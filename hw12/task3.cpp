@@ -10,7 +10,7 @@ int main(int argc, char** argv)
         std::cin >> data;
         file << data << std::endl;
 
-        int mass[data]{};
+        int * mass = new int[data];
         for (int i = data-1; i > -1; --i) {
             std::cout << "a[" << data-(i+1) << "] = ";
             std::cin >> mass[i];
@@ -18,6 +18,7 @@ int main(int argc, char** argv)
         for (int i = 0; i < data; ++i)
             file << *(mass+i)  << " ";
         file.close();
+        delete[] mass;
     }    
 }
 
