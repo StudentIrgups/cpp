@@ -29,14 +29,15 @@ int main() {
         } 
         inFile.close();
         int index = 1;
+
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
                 mass_old[i][j] = mass[i][j];
             }
         }
-        bool sch = true;
+        bool sch = true, extra = false;
         while (sch) {
-            //std::system("clear");
+            std::system("clear");
             sch = false;
 
             int c_astr = 0;
@@ -45,7 +46,6 @@ int main() {
                     int si = i, sj = j;
                     int fi = 0, fj = 0;
                     getStart(n,m,si,sj, fi, fj);
-                    //std::cout << si << ":" << fi << " " << sj << ":" << fj;
                     c_astr = 0;
                     for (int x = si; x < fi; ++x) {
                         for (int y = sj; y < fj; ++y) {
@@ -53,7 +53,7 @@ int main() {
                             c_astr += (mass_old[x][y] == '*');
                         }
                     }
-                    //std::cout << " " << c_astr << std::endl;
+                    
                     if ((c_astr == 3 || c_astr == 2) && mass_old[i][j] == '*') {}
                     else if (c_astr == 3 && mass_old[i][j] == '-') {
                         mass[i][j] = '*';
@@ -79,10 +79,15 @@ int main() {
             }
             std::cout << "Generation: " <<  index << ". Alive cells: " << c_astr << std::endl;
             if (sch == false) {
-                if (c_astr == 0) {
-                    std::cout << "All cells are dead. Game over." << std::endl;
+                if (extra == true) {
+                    if (c_astr == 0) {
+                        std::cout << "All cells are dead. Game over." << std::endl;
+                    } else {
+                        std::cout << "The world has stagnated. Game over." << std::endl;
+                    }
                 } else {
-                    std::cout << "The world has stagnated. Game over." << std::endl;
+                    sch = true;
+                    extra = true;
                 }
             }
             index++;
@@ -131,22 +136,19 @@ void getStart(int n, int m, int &i, int &j, int &fi, int &fj) {
         i = 0;
         fi--;
     }
+
     if (j < 0) {
         j = 0;
         fj--;
     }
-    //if (i == 4 && j == 0)
-      //  std::cout << i << ":" << fi << " " << j << ":" << fj << std::endl;
+
     fi = i + 3 + fi;
     fj = j + 3 + fj;
-    //if (i == 4 && j == 0)
-       // std::cout << i << ":" << fi << " " << j << ":" << fj << std::endl;    
+
     if (fi > n)
         fi = n;
     if (fj > m)
         fj = m;
-    //if (i == 4 && j == 0)
-    //    std::cout << i << ":" << fi << " " << j << ":" << fj << std::endl;        
 }
 
 void delete_two_dim_array(char** arr, int n, int m) {
