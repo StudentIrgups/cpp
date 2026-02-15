@@ -22,7 +22,7 @@ int main(void) {
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";  
     std::cin >> ans;     
     counter* activeCntr = nullptr;
-    counter cntr;        
+    counter cntr;     
 
     activeCntr = &cntr;
     if (ans == "да") {
@@ -30,8 +30,7 @@ int main(void) {
         int n = 0;
         std::cin >> n;
         
-        counter cntr1(n);
-        activeCntr = &cntr1;
+        activeCntr = new counter(n);
         ans = "";
     } else if(ans == "нет") {        
         ans = "";
@@ -56,4 +55,6 @@ int main(void) {
             ans = "";
         }
     } while (ans != "x");
+    delete activeCntr;
+    return 0;
 }
