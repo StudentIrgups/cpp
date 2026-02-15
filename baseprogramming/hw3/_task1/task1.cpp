@@ -70,16 +70,15 @@ int main(void){
         }
         file_in.close();
         
-        if (sizeof(package) > 0) {
-            std::ofstream file_out("out.txt");           
-            if (file_out.is_open()) {
+        std::ofstream file_out("out.txt");           
+        if (file_out.is_open()) {
 
-                file_out << size << std::endl;
-                for (int i = size-1; i > -1; --i)
-                    file_out << (package+i)->get_address()  << std::endl;
-                file_out.close();
-            }
+            file_out << size << std::endl;
+            for (int i = size-1; i > -1; --i)
+                file_out << (package+i)->get_address()  << std::endl;
+            file_out.close();
         }
+        
         delete[] package;
     }
     
