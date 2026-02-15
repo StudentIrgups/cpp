@@ -38,7 +38,7 @@
 
 [code](./_task2/task2.cpp)
 
-[in.txt](./_task1/in.txt)
+[in.txt](./_task2/in.txt)
 
 ```
 5
@@ -65,7 +65,7 @@
 
 ```
 
-[out.txt](./_task1/out.txt)
+[out.txt](./_task2/out.txt)
 
 ```
 
