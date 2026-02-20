@@ -18,10 +18,7 @@
 
 ![alt text](./images/2.png)
 
-# Task 4
-
-[code](./_task4/task4.cpp)
-
 ![alt text](./images/3.png)
+
 
 

@@ -4,191 +4,173 @@ class figure {
     public:
         virtual void print_info() {
         }
+    protected:
+        std::string _name;
 };
 
-class triangle: public figure {    
+class triangle: public figure {       
     public:
         triangle() {
-            __a = 10;
-            __b = 20;
-            __c = 30;
-            __A = 50;
-            __B = 60; 
-            __C = 70;
+            _a = 10;
+            _b = 20;
+            _c = 30;
+            _A = 50;
+            _B = 60; 
+            _C = 70;
+            _name = "Треугольник: ";
         }
         void print_info () override {
-            std::cout << "Треугольник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << std::endl;
+            std::cout <<  _name << std::endl;
+            std::cout << "Стороны: " << "a=" << _a << " b=" << _b << " c=" << _c << std::endl;
+            std::cout << "Углы: " << "A=" << _A << " B=" << _B << " C=" << _C << std::endl;
             std::cout << std::endl;
         }        
     protected:
-        int __a, __b, __c, __A, __B, __C;
+        int _a, _b, _c, _A, _B, _C;
 };
 
 class rightTriangle : public triangle {
         public:
         rightTriangle() {
-            __a = 10;
-            __b = 20;
-            __c = 30;
-            __A = 50;
-            __B = 60; 
-            __C = 90;
+            _a = 11;
+            _b = 22;
+            _c = 33;
+            _A = 50;
+            _B = 60; 
+            _C = 90;
+            _name = "Прямоугольный треугольник: ";
         }
-        void print_info () override {
-            std::cout << "Прямоугольный треугольник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << std::endl;
-            std::cout << std::endl;
+        void print_info () override {            
+            triangle::print_info();
         }  
 };
 
-class isoscelesTriangle : public triangle {
+ class isoscelesTriangle : public triangle {
         public:
         isoscelesTriangle() {
-            __a = 10;
-            __b = 20;
-            __c = 30;
-            __A = 50;
-            __B = 60; 
-            __C = 50;
+            _a = 10;
+            _b = 20;
+            _c = 30;
+            _A = 50;
+            _B = 60; 
+            _C = 50;
+            _name = "Равнобедренный треугольник: ";
         }
         void print_info () override {
-            std::cout << "Равнобедренный треугольник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << std::endl;
-            std::cout << std::endl;
+            triangle::print_info();
         }  
 };
 
 class equilateralTriangle : public triangle {
         public:
         equilateralTriangle () {
-            __a = 30;
-            __b = 30;
-            __c = 30;
-            __A = 60;
-            __B = 60; 
-            __C = 60;
+            _a = 30;
+            _b = 30;
+            _c = 30;
+            _A = 60;
+            _B = 60; 
+            _C = 60;
+            _name = "Равносторонний треугольник: ";
         }
         void print_info () override {
-            std::cout << "Равносторонний треугольник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << std::endl;
-            std::cout << std::endl;
+            triangle::print_info();
         }  
 };
 
 class quadangle : public figure {    
     public:
         quadangle() {
-            __a = 10;
-            __b = 20;
-            __c = 30;
-            __d = 40;
-            __A = 50;
-            __B = 60; 
-            __C = 70;
-            __D = 80;
+            _a = 10;
+            _b = 20;
+            _c = 30;
+            _d = 40;
+            _A = 50;
+            _B = 60; 
+            _C = 70;
+            _D = 80;
+            _name = "Четырёхугольник: ";
         }
         void print_info () override {
-            std::cout << "Четырёхугольник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << " d=" << __d << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << " D=" << __D << std::endl;
+            std::cout << _name << std::endl;
+            std::cout << "Стороны: " << "a=" << _a << " b=" << _b << " c=" << _c << " d=" << _d << std::endl;
+            std::cout << "Углы: " << "A=" << _A << " B=" << _B << " C=" << _C << " D=" << _D << std::endl;
             std::cout << std::endl;
         }        
     protected:
-        int __a, __b, __c, __d, __A, __B, __C, __D;
+        int _a, _b, _c, _d, _A, _B, _C, _D;
 };
 
 class rectangle : public quadangle {    
     public:
         rectangle() {
-            __a = 10;
-            __b = 20;
-            __c = 10;
-            __d = 20;
-            __A = 90;
-            __B = 90; 
-            __C = 90;
-            __D = 90;
+            _a = 10;
+            _b = 20;
+            _c = 10;
+            _d = 20;
+            _A = 90;
+            _B = 90; 
+            _C = 90;
+            _D = 90;
+            _name = "Прямоульник: ";
         }
         void print_info () override {
-            std::cout << "Прямоульник: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << " d=" << __d << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << " D=" << __D << std::endl;
-            std::cout << std::endl;
-        }        
-    protected:
-        int __a, __b, __c, __d, __A, __B, __C, __D;
+            quadangle::print_info();
+        } 
 };
 
 class square : public quadangle {    
     public:
         square() {
-            __a = 20;
-            __b = 20;
-            __c = 20;
-            __d = 20;
-            __A = 90;
-            __B = 90; 
-            __C = 90;
-            __D = 90;
+            _a = 20;
+            _b = 20;
+            _c = 20;
+            _d = 20;
+            _A = 90;
+            _B = 90; 
+            _C = 90;
+            _D = 90;
+            _name = "Квадрат: ";
         }
         void print_info () override {
-            std::cout << "Квадрат: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << " d=" << __d << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << " D=" << __D << std::endl;
-            std::cout << std::endl;
+            quadangle::print_info();
         }        
-    protected:
-        int __a, __b, __c, __d, __A, __B, __C, __D;
 };
 
 class parallelogram : public quadangle {    
     public:
         parallelogram() {
-            __a = 20;
-            __b = 40;
-            __c = 20;
-            __d = 40;
-            __A = 50;
-            __B = 60; 
-            __C = 50;
-            __D = 60;
+            _a = 20;
+            _b = 40;
+            _c = 20;
+            _d = 40;
+            _A = 50;
+            _B = 60; 
+            _C = 50;
+            _D = 60;
+            _name = "Параллелограмм: ";
         }
         void print_info () override {
-            std::cout << "Параллелограмм: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << " d=" << __d << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << " D=" << __D << std::endl;
-            std::cout << std::endl;
-        }        
-    protected:
-        int __a, __b, __c, __d, __A, __B, __C, __D;
+            quadangle::print_info();
+        } 
 };
 
 class rum : public quadangle {    
     public:
         rum() {
-            __a = 40;
-            __b = 40;
-            __c = 40;
-            __d = 40;
-            __A = 50;
-            __B = 60; 
-            __C = 50;
-            __D = 60;
+            _a = 40;
+            _b = 40;
+            _c = 40;
+            _d = 40;
+            _A = 50;
+            _B = 60; 
+            _C = 50;
+            _D = 60;
+            _name = "Ромб: ";
         }
         void print_info () override {
-            std::cout << "Ромб: " << std::endl;
-            std::cout << "Стороны: " << "a=" << __a << " b=" << __b << " c=" << __c << " d=" << __d << std::endl;
-            std::cout << "Углы: " << "A=" << __A << " B=" << __B << " C=" << __C << " D=" << __D << std::endl;
-            std::cout << std::endl;
+            quadangle::print_info();
         }        
-    protected:
-        int __a, __b, __c, __d, __A, __B, __C, __D;
-};
+}; 
 
 int main(void){
 
@@ -203,7 +185,7 @@ int main(void){
     *(instances + now++) = new rectangle;
     *(instances + now++) = new square;
     *(instances + now++) = new parallelogram;
-    *(instances + now++) = new rum;
+    *(instances + now++) = new rum; 
 
     for (int i = 0; i < now; ++i) {
         instances[i]->print_info();
