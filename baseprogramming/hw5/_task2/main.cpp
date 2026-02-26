@@ -8,7 +8,7 @@ int main(void) {
     counter* activeCntr = nullptr;
     counter cntr;     
 
-    activeCntr = &cntr;
+    activeCntr = new counter;
     if (ans == "да") {
         std::cout << "ВВведите начальное значение счётчика: ";
         int n = 0;
