@@ -1,8 +1,7 @@
 #pragma once
 #include "exception.h"
 
-class figure {
-    virtual bool check();
+class figure {    
     public:
         figure(const std::string& name = "Фигура", int count = 0):_name(name), sideCount(count) {
             for (int i = 0; i < 4; ++i) {
@@ -19,10 +18,12 @@ class figure {
         const int* get_sides() const;
 
         const int* get_angels() const;
-
-    protected:
+        
+        virtual bool check();
+    
+        protected:
         std::string _name;
         int sides[4];
         int angels[4];
-        int sideCount;
+        int sideCount;        
 };

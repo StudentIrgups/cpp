@@ -8,4 +8,8 @@ triangle::triangle(int a = 10, int b = 20, int c = 30, int A = 50, int B = 60, i
     angels[0] = A;
     angels[1] = B; 
     angels[2] = C;
+};
+
+bool triangle::check(){
+    return sideCount == 3;
 }
