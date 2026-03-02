@@ -10,6 +10,14 @@
 
 [main.cpp](./_task2/main.cpp)
 
+[exception.h](./_task2/exception.h)
+
+[exception.cpp](./_task2/exception.cpp)
+
+[triangle.cpp](./_task2/triangle.cpp)
+
+[quadangle.cpp](./_task2/quadangle.cpp)
+
 ![alt text](./images/1.png)
 
 ![alt text](./images/2.png)
