@@ -1,4 +1,4 @@
-#include "rightTriange.h"
+#include "rightTriangle.h"
 
 rightTriangle::rightTriangle() {
     _a = 11;

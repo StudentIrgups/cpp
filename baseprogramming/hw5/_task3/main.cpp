@@ -1,6 +1,6 @@
 #include "figure.h"
 #include "triangle.h"
-#include "rightTriange.h"
+#include "rightTriangle.h"
 #include "isoscelesTriangle.h"
 #include "equilateralTriangle.h"
 #include "quadangle.h"
@@ -13,25 +13,27 @@ int main(void){
 
     int now = 0;
 
-    figure* instances[20] = {nullptr};
+    figure* instances[] = {
+        new figure,
+        new triangle,
+        new rightTriangle,
+        new isoscelesTriangle,
+        new equilateralTriangle,
+        new quadangle,
+        new rectangle,
+        new square,
+        new parallelogram,
+        new rum 
+    };
 
-    *(instances + now++) = new figure;
-    *(instances + now++) = new triangle;
-    *(instances + now++) = new rightTriangle;
-    *(instances + now++) = new isoscelesTriangle;
-    *(instances + now++) = new equilateralTriangle;
-    *(instances + now++) = new quadangle;
-    *(instances + now++) = new rectangle;
-    *(instances + now++) = new square;
-    *(instances + now++) = new parallelogram;
-    *(instances + now++) = new rum; 
+    now = sizeof(instances) / sizeof(instances[0]);
 
     for (int i = 0; i < now; ++i) {
         instances[i]->print_info();
         std::cout << std::endl;
     }
 
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < now; ++i) {
         if (instances[i] != nullptr) {  
             delete instances[i];
             instances[i] = nullptr;
