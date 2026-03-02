@@ -3,5 +3,5 @@
 
 class rum : public quadangle {   
     public:
-        rum(int a, int b, int c, int d, int A, int B, int C, int D);
+        rum(int a, int b, int c, int d, int A, int B, int C, int D, int sideCount);
 }; 

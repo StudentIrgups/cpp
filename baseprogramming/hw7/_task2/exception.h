@@ -3,5 +3,8 @@
 
 class badFigure : public std::exception {
     public: 
-        virtual const char* what() const noexcept;
+        badFigure(std::string str);
+        virtual std::string what();
+    protected:
+        std::string __error{""};
 };

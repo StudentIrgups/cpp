@@ -3,5 +3,6 @@
 
 class rightTriangle : public triangle {
         public:
-                rightTriangle(int a, int b, int c, int A, int B, int C);
+                rightTriangle(int a, int b, int c, int A, int B, int C, int sideCount);
+                bool check() override;
 };

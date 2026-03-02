@@ -1,7 +1,10 @@
 #include "triangle.h"
   
-triangle::triangle(int a = 10, int b = 20, int c = 30, int A = 50, int B = 60, int C = 70) 
-    : figure("Треугольник", 3){
+triangle::triangle(int a, int b, int c, int A, int B, int C, int sideCount) 
+    : figure("Треугольник", sideCount){
+    if (A + B + C != 180) {
+        throw badFigure("сумма углов не равна 180");
+    }    
     sides[0] = a;
     sides[1] = b;
     sides[2] = c;
@@ -10,6 +13,9 @@ triangle::triangle(int a = 10, int b = 20, int c = 30, int A = 50, int B = 60, i
     angels[2] = C;
 };
 
-bool triangle::check(){
-    return sideCount == 3;
+bool triangle::check() {
+    int sum{0};
+    for (int i = 0; i < get_sidesCount(); ++i)
+        sum += angels[i];
+    return sideCount == 3  && sum == 180;
 }

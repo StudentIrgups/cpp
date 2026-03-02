@@ -8,6 +8,7 @@ class figure {
                 sides[i] = 0;
                 angels[i] = 0;
             }
+            sideCount = count;
         }
         virtual ~figure();
 
@@ -19,7 +20,7 @@ class figure {
 
         const int* get_angels() const;
         
-        virtual bool check();
+        virtual bool check();            
     
         protected:
         std::string _name;
