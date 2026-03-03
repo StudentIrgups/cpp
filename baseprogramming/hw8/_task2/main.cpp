@@ -103,19 +103,50 @@ public:
         numerator_ += denominator_;
         return *this;
     }
+
+    Fraction& operator --() {
+        numerator_ -= denominator_;
+        return *this;
+    }    
+    
+    Fraction operator --(int) {
+        Fraction temp = *this;
+        --(*this);
+        return temp;
+    }  
+    
+    Fraction operator ++(int) {
+        Fraction temp = *this;
+        ++(*this);
+        return temp;
+    }      
 };
 
-int main()
-{
-	Fraction f1(3, 4);
-	Fraction f2(4, 5);
-    //Fraction f3 = f1 + f2;
+int main() {
+    int a{0}, b{0};
+    std::cout << "Введите числитель дроби 1: ";
+    std::cin >> a;
+    std::cout << "Введите знаменатель дроби 1: ";
+    std::cin >> b;
+	Fraction f1(a, b);
+    std::cout << "Введите числитель дроби 2: ";
+    std::cin >> a;
+    std::cout << "Введите знаменатель дроби 2: ";
+    std::cin >> b;
+	Fraction f2(a, b);
 
     std::cout << f1.print() << " + " << f2.print() << " = " << (f1 + f2).print() << std::endl;
     std::cout << f1.print() << " - " << f2.print() << " = " << (f1 - f2).print() << std::endl;
     std::cout << f1.print() << " * " << f2.print() << " = " << (f1 * f2).print() << std::endl;
     std::cout << f1.print() << " / " << f2.print() << " = " << (f1 / f2).print() << std::endl;
     std::cout << "++" << f1.print() << " * " << f2.print() << " = " << (++f1 * f2).print() << std::endl;
+    std::cout << "Значение дроби 1 = " << f1.print() << std::endl;
+    std::cout << f1.print() << "--" << " * " << f2.print() << " = " << (f1-- * f2).print() << std::endl;
+    std::cout << "Значение дроби 1 = " << f1.print() << std::endl;
+    std::cout << "Тест постфиксной записи: " << std::endl;
+    std::cout << "f1++ = " << f1++.print() << " После инкремента: " << f1.print() << std::endl;
+    std::cout << "Тест префисксной записи: " << std::endl;
+    std::cout << "++f1 = " << (++f1).print() << " После инкремента: " << f1.print() << std::endl;
 
 	return 0;
 }
