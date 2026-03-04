@@ -36,34 +36,22 @@ private:
     }
 public:
 	Fraction(int numerator, int denominator)
-	{
-		numerator_ = numerator;
-		denominator_ = denominator;
+	{       
+        int signNum = 1, signDen = 1;      
+        if (numerator < 0) {
+            signNum = -1;
+        }
+        if (denominator < 0) {
+            signDen = -1;
+        }
+        numerator *= signNum;
+        denominator *= signDen;
+        int gcdv = gcd(numerator, denominator); 
+        numerator *= signNum;
+        denominator *= signDen;
+		numerator_ = numerator / gcdv;
+		denominator_ = denominator / gcdv;
 	}
-
-    bool operator == (const Fraction &other) {
-        return (numerator_ * other.denominator_ == other.numerator_ * denominator_);
-    }
-
-    bool operator != (const Fraction &other) {
-        return !(*this == other);
-    }
-
-    bool operator < (const Fraction &other) {
-        return numerator_ * other.denominator_ < other.numerator_ * denominator_;
-    }
-
-    bool operator > (const Fraction &other) {
-        return !(*this < other);
-    }
-
-    bool operator <= (const Fraction &other) {
-        return numerator_ * other.denominator_ <= other.numerator_ * denominator_;
-    }
-
-    bool operator >= (const Fraction &other) {
-        return numerator_ * other.denominator_ >= other.numerator_ * denominator_;
-    }
 
     std::string print() {
         return toStr(numerator_) + "/" + toStr(denominator_);
@@ -71,16 +59,14 @@ public:
 
     Fraction operator + (Fraction& other) {
         int denominator = denominator_ * other.denominator_;   
-        int gcdv = gcd(numerator_ * other.denominator_, other.numerator_ * denominator_);        
-
-        return Fraction(numerator_ * other.denominator_ / gcdv + other.numerator_ * denominator_ / gcdv, denominator); 
+               
+        return Fraction(numerator_ * other.denominator_ + other.numerator_ * denominator_, denominator); 
     }
 
     Fraction operator - (Fraction& other) {
         int denominator = denominator_ * other.denominator_;   
-        int gcdv = gcd(numerator_ * other.denominator_, other.numerator_ * denominator_);        
 
-        return Fraction(numerator_ * other.denominator_ / gcdv - other.numerator_ * denominator_ / gcdv, denominator);         
+        return Fraction(numerator_ * other.denominator_ - other.numerator_ * denominator_, denominator);         
     }
 
     Fraction operator * (Fraction& other) {
