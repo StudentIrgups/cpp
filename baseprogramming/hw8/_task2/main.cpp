@@ -72,17 +72,15 @@ public:
     Fraction operator * (Fraction& other) {
         int denominator = denominator_ * other.denominator_;   
         int numerator  = numerator_ * other.numerator_;
-        int gcdv = gcd(numerator, denominator);        
 
-        return Fraction(numerator / gcdv, denominator / gcdv);         
+        return Fraction(numerator, denominator);         
     }
 
     Fraction operator / (Fraction& other) {
         int denominator = denominator_ * other.numerator_;   
-        int numerator  = numerator_ * other.denominator_;
-        int gcdv = gcd(numerator, denominator);        
+        int numerator  = numerator_ * other.denominator_;  
 
-        return Fraction(numerator / gcdv, denominator / gcdv);         
+        return Fraction(numerator, denominator);         
     }
 
     Fraction& operator ++() {
