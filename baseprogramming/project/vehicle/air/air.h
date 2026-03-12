@@ -1,9 +1,8 @@
 #include "../vehicle.h"
 
-class air : vehicle {
+class air : public vehicle {
     public:
-        air();
-        ~air();    
+        air();    
     private:
         float reductionFactor;
 };
