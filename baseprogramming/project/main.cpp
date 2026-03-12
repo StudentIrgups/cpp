@@ -42,12 +42,16 @@ int main(void) {
             std::cout << ChooseVehicleOrZeroToStop;
             std::cin >> action;
             if (action != static_cast<int>(actions::RegistrationStop)) {
-                omenu->add_to_reg(action);
-                std::cout << omenu->get_last() << RegistrationSuccess << std::endl;
-                if (reged.length() == 0) 
-                    reged = omenu->get_last();
-                else
-                    reged += ", " + omenu->get_last();
+                std::string res = omenu->add_to_reg(action);
+                if (res == "1") {
+                    std::cout << omenu->get_last() << RegistrationSuccess << std::endl;
+                    if (reged.length() == 0) 
+                        reged = omenu->get_last();
+                    else
+                        reged += ", " + omenu->get_last();
+                } else {
+                    std::cout << res << std::endl;
+                }
             }
         } while(action != 0);
     } else {

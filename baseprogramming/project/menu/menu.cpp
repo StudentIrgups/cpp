@@ -14,6 +14,9 @@ menu::menu() {
     arrVehicles[static_cast<int>(evehicles::broom)]           = "Метла";
 }
 
+menu::~menu() {
+    delete[] regedVehc;
+}
 void menu::set_distance(int dis) {
     distance = dis;
 }
@@ -46,23 +49,38 @@ int menu::get_arrvehicles_size() {
     return sizeof(arrVehicles)/sizeof(arrVehicles[0]);
 }
 
-void menu::add_to_reg(int typeVehic) {
-    int old_size = sizeof(regedVehc) / sizeof(regedVehc[0]);
-    
-    vehicle* newArray[old_size + 1] {nullptr}; 
+std::string menu::add_to_reg(int typeVehic) {
 
-    for (size_t i = 0; i < old_size; ++i) {
-        newArray[i] = regedVehc[i]; 
-    }
+    if (typeVehic < 0 || typeVehic > get_arrvehicles_size())
+        return "Нет такого вида транспорта";
 
-    for (int i = 0; i < old_size; ++i) {
-        if (regedVehc[i] != nullptr) {  
-            delete regedVehc[i];
-            regedVehc[i] = nullptr;
+    if (typeRace == 0) {
+        if (typeVehic != static_cast<int>(evehicles::camel)           &&
+            typeVehic != static_cast<int>(evehicles::camelFast)       &&
+            typeVehic != static_cast<int>(evehicles::allTerrainBoots) &&
+            typeVehic != static_cast<int>(evehicles::centaur)) {
+            return arrVehicles[typeVehic-1] + " не разрешён на " + get_type_race();
+        }
+    } else if (typeRace == 1) {
+        if (typeVehic != static_cast<int>(evehicles::flyingCarpet) &&
+            typeVehic != static_cast<int>(evehicles::eagle)        &&
+            typeVehic != static_cast<int>(evehicles::broom)) {
+            return arrVehicles[typeVehic-1] + " не разрешён на " + get_type_race();
         }
     }
+       
+    vehicle* newArray = new vehicle[size]; 
 
-    for (size_t i = 0; i < old_size; ++i) {
+    if (size > 1)
+        for (size_t i = 0; i < size; ++i) {
+            newArray[i] = regedVehc[i]; 
+        }
+
+    delete[] regedVehc;
+    
+    regedVehc = new vehicle[++size];
+
+    for (size_t i = 0; i < size-1; ++i) {
         regedVehc[i] = newArray[i]; 
     }
 
@@ -70,19 +88,16 @@ void menu::add_to_reg(int typeVehic) {
         typeVehic == static_cast<int>(evehicles::camelFast)       ||
         typeVehic == static_cast<int>(evehicles::allTerrainBoots) ||
         typeVehic == static_cast<int>(evehicles::centaur)) {  
-        regedVehc[old_size] = new ground(typeVehic);
+        ground oground(typeVehic);
+        regedVehc[size-1] = oground;
     }    
 
-    for (int i = 0; i < old_size + 1; ++i) {
-        if (newArray[i] != nullptr) {  
-            delete newArray[i];
-            newArray[i] = nullptr;
-        }
-    }
+    delete[] newArray;
+    return "1";
 }
 
 std::string menu::get_last() {
-    return regedVehc[sizeof(regedVehc) / sizeof(regedVehc[0])]->get_name();
+    return regedVehc[size-1].get_name();
 }
 
 /* vehicle * menu::get_reged() {

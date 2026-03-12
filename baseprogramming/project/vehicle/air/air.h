@@ -2,7 +2,7 @@
 
 class air : public vehicle {
     public:
-        air();    
+        air(int type);    
     private:
         float reductionFactor;
 };
