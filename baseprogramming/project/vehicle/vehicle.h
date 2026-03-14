@@ -6,8 +6,8 @@ class vehicle {
         vehicle();
         ~vehicle(){};
         std::string get_name();
+        int get_param();
     protected:
-        std::string name{""};
-        int speed{0};
+        svehicle agvehicle;
     private:
 };

@@ -4,5 +4,9 @@ vehicle::vehicle() {
 }
 
 std::string vehicle::get_name() {
-    return name;
+    return agvehicle.name;
+}
+
+int vehicle::get_param() {
+    return agvehicle.param;
 }

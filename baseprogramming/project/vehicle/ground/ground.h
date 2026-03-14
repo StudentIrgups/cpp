@@ -4,5 +4,4 @@ class ground : public vehicle {
     public:
         ground(int type);
     private:
-        float reductionFactor;    
 };
