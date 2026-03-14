@@ -6,7 +6,7 @@ class vehicle {
         vehicle();
         ~vehicle(){};
         std::string get_name();
-        int get_param();
+        svehicle get_param();
     protected:
         svehicle agvehicle;
     private:

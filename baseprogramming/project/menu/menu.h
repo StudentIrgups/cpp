@@ -11,7 +11,7 @@ class menu {
         void set_distance(int dis);
         std::string * get_races();
         int get_races_size();
-        void set_type_race(int type);
+        int set_type_race(int type);
         std::string get_type_race();
         int get_distance();
         std::string * get_vehicles();

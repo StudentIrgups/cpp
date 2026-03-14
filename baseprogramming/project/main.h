@@ -13,21 +13,22 @@ enum class evehicles {
 
 struct svehicle {
     evehicles vehicle;
-    std::string name;
-    int param;
+    std::string name{""};
+    int speed{0};
+    int timeMove{0};
 };
 
 const svehicle gvehicles[] = {
-    { evehicles::camel,           "Верблюд",          1 },
-    { evehicles::camelFast,       "Верблюд-скороход", 1 },
-    { evehicles::centaur,         "Кентавр",          1 },
-    { evehicles::allTerrainBoots, "Сапоги вездеходы", 1 }
+    { evehicles::camel,           "Верблюд",          10, 30 },
+    { evehicles::camelFast,       "Верблюд-скороход", 40, 10 },
+    { evehicles::centaur,         "Кентавр",          15, 8 },
+    { evehicles::allTerrainBoots, "Сапоги вездеходы", 6, 60 }
 };
 
 const svehicle avehicles[] = {
-    { evehicles::flyingCarpet, "Ковёр самолёт", 2 },
-    { evehicles::eagle,        "Орёл", 2 },
-    { evehicles::broom,        "Метла", 2 }
+    { evehicles::flyingCarpet, "Ковёр самолёт", 10 },
+    { evehicles::eagle,        "Орёл",          8 },
+    { evehicles::broom,        "Метла",         20 }
 };
 
 enum class actions {
@@ -53,3 +54,4 @@ enum class actions {
 #define Time "Время: "
 #define AnotherRace "1. Провести ещё одну гонку"
 #define Exit "2. Выход"
+#define NoThisType "Нет такого типа гонки"

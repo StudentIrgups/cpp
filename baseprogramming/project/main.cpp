@@ -6,17 +6,21 @@ int main(void) {
     do {
         menu * omenu = new menu();
         int racesSize = omenu->get_races_size(); 
-
-        for (int i = 0; i < racesSize; ++i) {
-            std::cout << i+1 << ". " << omenu->get_races()[i] << std::endl;
-        }
         
-        std::cout << TakeTypeOfRace;
         int typeRace{0};
-        std::cin >> typeRace;
-        std::system("clear");
-        omenu->set_type_race(typeRace - 1);
-
+        do {
+            for (int i = 0; i < racesSize; ++i) {
+                std::cout << i+1 << ". " << omenu->get_races()[i] << std::endl;
+            }
+            std::cout << TakeTypeOfRace;        
+            std::cin >> typeRace;
+            std::system("clear");        
+            typeRace = omenu->set_type_race(typeRace - 1);
+            if (typeRace == -1) {
+                std::cout << NoThisType << std::endl;
+            }
+        } while(typeRace == -1);
+        
         std::cout << TakeDistance;
         int dis{0};
         std::cin >> dis;
@@ -86,6 +90,7 @@ int main(void) {
             } else {
                 delete omenu;
                 std::cout << NoAction << std::endl;
+                break;                
             }
         } while(action1 != 1);  
     } while (action != 2);
