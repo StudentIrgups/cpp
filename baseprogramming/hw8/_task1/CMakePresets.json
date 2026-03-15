@@ -1,0 +1,16 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "main",
+            "description": "default settings for cmake project",
+            "hidden": false,
+            "generator": "Unix Makefiles",
+            "binaryDir": "${workspaceFolder}/cpp/baseprogramming/hw8/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE" : "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS" : "YES"
+            }
+        }
+    ]
+}

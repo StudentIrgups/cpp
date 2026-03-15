@@ -1,5 +1,5 @@
 #pragma once
-#include "../vehicle/vehicle.h"
+#include "vehicle.h"
 
 class processor {
     public:

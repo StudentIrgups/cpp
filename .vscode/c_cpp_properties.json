@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "CPP_BP_PROJECT",
+            "includePath": [
+                "${workspaceFolder}/cpp/baseprogramming/project/mymenu/",
+                "${workspaceFolder}/cpp/baseprogramming/project/processor/**",
+                "${workspaceFolder}/cpp/baseprogramming/project//vehicle/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "mymenu.h"
 
 menu::menu() {
     races[0] = "Гонка для наземного транспорта";
@@ -38,7 +38,7 @@ int menu::get_races_size() {
 }
 
 int menu::set_type_race(int type) {
-    if (type < 0 || type > sizeof(races) / sizeof(races[0]))
+    if (type < 0 || type >= sizeof(races) / sizeof(races[0]))
         return -1;
     typeRace = type;
     return 0;

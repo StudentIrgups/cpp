@@ -1,8 +1,8 @@
 #pragma once
-#include "../vehicle/vehicle.h"
-#include "../vehicle/ground/ground.h"
-#include "../vehicle/air/air.h"
-#include "../processor/processor.h"
+#include "vehicle.h"
+#include "ground.h"
+#include "air.h"
+#include "processor.h"
 
 class menu {
     public:        

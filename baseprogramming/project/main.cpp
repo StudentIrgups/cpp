@@ -1,4 +1,5 @@
-#include "menu/menu.h"
+#include "mymenu.h"
+#include <limits>
 
 int main(void) {
     std::cout << Hello << std::endl;
@@ -8,18 +9,27 @@ int main(void) {
         int racesSize = omenu->get_races_size(); 
         
         int typeRace{0};
-        do {
+        while(true) { 
+            typeRace = 0;         
             for (int i = 0; i < racesSize; ++i) {
-                std::cout << i+1 << ". " << omenu->get_races()[i] << std::endl;
+                std::cout << i+1 << ". " << omenu->get_races()[i] << std::endl << std::flush;
             }
-            std::cout << TakeTypeOfRace;        
-            std::cin >> typeRace;
-            std::system("clear");        
+            std::cout << TakeTypeOfRace << std::flush;   
+             
+            while (!(std::cin >> typeRace)) {
+                std::cin.clear();                        
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');            
+                std::cout << "Ошибка! Введите число: ";
+            }
+            
+            std::system("clear");                
             typeRace = omenu->set_type_race(typeRace - 1);
             if (typeRace == -1) {
                 std::cout << NoThisType << std::endl;
+                continue;
             }
-        } while(typeRace == -1);
+            break;
+        } 
         
         std::cout << TakeDistance;
         int dis{0};
