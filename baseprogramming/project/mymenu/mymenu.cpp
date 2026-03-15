@@ -1,6 +1,6 @@
 #include "mymenu.h"
 
-menu::menu() {
+mymenu::menu::menu() {
     races[0] = "Гонка для наземного транспорта";
     races[1] = "Гонка для воздушного транспорта";
     races[2] = "Гонка для наземного и воздушного транспорта";
@@ -20,47 +20,47 @@ menu::menu() {
     }
 }
 
-menu::~menu() {
+mymenu::menu::~menu() {
     delete[] regedVehc;
     delete[] arrVehicles;
 }
 
-void menu::set_distance(int dis) {    
+void mymenu::menu::set_distance(int dis) {    
     distance = dis;
 }
 
-std::string * menu::get_races() {
+std::string * mymenu::menu::get_races() {
     return races;
 }
 
-int menu::get_races_size() {
+int mymenu::menu::get_races_size() {
     return sizeof(races)/sizeof(races[0]);
 }
 
-int menu::set_type_race(int type) {
+int mymenu::menu::set_type_race(int type) {
     if (type < 0 || type >= sizeof(races) / sizeof(races[0]))
         return -1;
     typeRace = type;
     return 0;
 }
 
-std::string menu::get_type_race() {
+std::string mymenu::menu::get_type_race() {
     return races[typeRace];
 }
 
-int menu::get_distance() {
+int mymenu::menu::get_distance() {
     return distance;
 }
 
-std::string * menu::get_vehicles() {
+std::string * mymenu::menu::get_vehicles() {
     return arrVehicles;
 }
 
-int menu::get_arrvehicles_size() {
+int mymenu::menu::get_arrvehicles_size() {
     return arrVehicles_size;
 }
 
-std::string menu::add_to_reg(int typeVehic) {
+std::string mymenu::menu::add_to_reg(int typeVehic) {
 
     if (typeVehic < 0 || typeVehic > get_arrvehicles_size())
         return "Нет такого вида транспорта";
@@ -80,7 +80,7 @@ std::string menu::add_to_reg(int typeVehic) {
         }
     }
        
-    vehicle* newArray = new vehicle[size]; 
+    vehicle_space::vehicle* newArray = new vehicle_space::vehicle[size]; 
 
     if (size > 1)
         for (size_t i = 0; i < size; ++i) {
@@ -89,7 +89,7 @@ std::string menu::add_to_reg(int typeVehic) {
 
     delete[] regedVehc;
     
-    regedVehc = new vehicle[++size];
+    regedVehc = new vehicle_space::vehicle[++size];
 
     for (size_t i = 0; i < size-1; ++i) {
         regedVehc[i] = newArray[i]; 
@@ -99,14 +99,14 @@ std::string menu::add_to_reg(int typeVehic) {
         typeVehic == static_cast<int>(evehicles::camelFast)       ||
         typeVehic == static_cast<int>(evehicles::allTerrainBoots) ||
         typeVehic == static_cast<int>(evehicles::centaur)) {  
-        ground oground(typeVehic);
+        vehicle_space::ground oground(typeVehic);
         regedVehc[size-2] = oground;
     }    
 
     if (typeVehic == static_cast<int>(evehicles::flyingCarpet) ||
         typeVehic == static_cast<int>(evehicles::eagle)        ||
         typeVehic == static_cast<int>(evehicles::broom)) {
-        air oair(typeVehic);
+        vehicle_space::air oair(typeVehic);
         regedVehc[size-2] = oair;
     }
 
@@ -114,15 +114,15 @@ std::string menu::add_to_reg(int typeVehic) {
     return "1";
 }
 
-std::string menu::get_last() {
+std::string mymenu::menu::get_last() {
     return regedVehc[size-2].get_name();
 }
 
-vehicle * menu::get_reged() {
+vehicle_space::vehicle * mymenu::menu::get_reged() {
     return regedVehc;
 }
 
-int menu::get_reged_size() {
+int mymenu::menu::get_reged_size() {
     return size;
 }
 

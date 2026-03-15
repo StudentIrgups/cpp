@@ -1,7 +1,9 @@
 #include "vehicle.h"
 
-class ground : public vehicle {
-    public:
-        ground(int type);
-    private:
-};
+namespace vehicle_space {
+    class ground : public vehicle {
+        public:
+            ground(int type);
+        private:
+    };
+}

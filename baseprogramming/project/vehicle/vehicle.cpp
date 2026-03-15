@@ -1,12 +1,12 @@
 #include "vehicle.h"
 
-vehicle::vehicle() {
+vehicle_space::vehicle::vehicle() {
 }
 
-std::string vehicle::get_name() {
+std::string vehicle_space::vehicle::get_name() {
     return agvehicle.name;
 }
 
-svehicle vehicle::get_param() {
+svehicle vehicle_space::vehicle::get_param() {
     return agvehicle;
 }

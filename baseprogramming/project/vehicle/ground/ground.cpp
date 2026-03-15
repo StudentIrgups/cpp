@@ -1,5 +1,5 @@
 #include "ground.h"
 
-ground::ground(int type) {
+vehicle_space::ground::ground(int type) {
     agvehicle = gvehicles[type];
 }

@@ -1,6 +1,6 @@
 #include "processor.h"
 
-float processor::process(vehicle &ovehicle, int distance) {
+float processor::processor::process(vehicle_space::vehicle &ovehicle, int distance) {
     float value{0.0};
     svehicle vehicle = ovehicle.get_param();
     int times{0};

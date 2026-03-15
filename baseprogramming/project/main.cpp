@@ -5,7 +5,7 @@ int main(void) {
     std::cout << Hello << std::endl;
     int action{0};
     do {
-        menu * omenu = new menu();
+        mymenu::menu * omenu = new mymenu::menu();
         int racesSize = omenu->get_races_size(); 
         
         int typeRace{0};
@@ -82,8 +82,8 @@ int main(void) {
                 std::cout << Results << std::endl;
 
                 for (int i = 0; i < omenu->get_reged_size() - 1; ++i) {
-                    processor oprocessor;
-                    vehicle ovehicle = omenu->get_reged()[i];
+                    processor::processor oprocessor;
+                    vehicle_space::vehicle ovehicle = omenu->get_reged()[i];
                     std::cout << i + 1 << ". " << ovehicle.get_name() << ". " << Time << oprocessor.process(omenu->get_reged()[i], dis) << std::endl;
                 }               
                 std::cout << std::endl;
