@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.6)
+cmake_minimum_required(VERSION 3.22.1)
 
 project(hw9 VERSION 0.1.0 LANGUAGES CXX)
 
@@ -11,6 +11,8 @@ add_library(leaver SHARED
     leaver/leaver.h
     leaver/leaver.cpp
 )
+
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_executable(main main.cpp)
 
