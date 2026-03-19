@@ -7,15 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
-                "-g",
-                "${fileDirname}/menu/*.cpp",
-                "-g",
-                "${fileDirname}/vehicle/*.cpp",                
-                "-g",
-                "${fileDirname}/vehicle/air/*.cpp",
-                "-g",
-                "${fileDirname}/vehicle/ground/*.cpp",                                
+                "${file}",                             
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
