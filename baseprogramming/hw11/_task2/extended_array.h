@@ -46,9 +46,9 @@ public:
 
 	double mean(int a, int b) {
 		if (a >= b)
-			trow std::invalid_argument("Первый аргумент больше или равен второму");
+			throw std::invalid_argument("Первый аргумент больше или равен второму");
 		double sum = 0;
-		for (size_t i = 1; i <= b; i++)
+		for (size_t i = a-1; i < b; i++)
 		{
 			sum += extended_array[i];
 		}

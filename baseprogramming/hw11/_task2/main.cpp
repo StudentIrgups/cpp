@@ -2,8 +2,6 @@
 
 int main()
 {   
-    test_mean();
-    test_median();
-    test_mode();
+    RunAllTest();
     return 0;
 }

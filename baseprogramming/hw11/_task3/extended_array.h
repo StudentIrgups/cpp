@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <typeinfo>
 
 template <typename T>
 class ExtArray
@@ -39,7 +40,22 @@ public:
 		{
 			sum += extended_array[i];
 		}
+		if (_size == 0)
+			return 0;
 		return sum / _size;
+	}
+
+	double mean(int a, int b) {
+		if (a >= b)
+			throw std::invalid_argument("Первый аргумент больше или равен второму");
+		double sum = 0;
+		for (size_t i = a-1; i < b; i++)
+		{
+			sum += extended_array[i];
+		}
+		if (_size == 0)
+			return 0;
+		return sum / (b-a+1);
 	}
 
 	double median()
@@ -47,6 +63,8 @@ public:
 		std::vector<T> temp_array;
 		std::copy(extended_array.begin(), extended_array.end(), back_inserter(temp_array));
 		std::sort(temp_array.begin(), temp_array.end());
+		if (_size == 0)
+			return 0;
 		if (_size % 2 == 1)
 		{
 			return temp_array[_size / 2];
@@ -59,6 +77,8 @@ public:
 
 	std::pair<T, int> mode()
 	{
+		if (_size == 0)
+			return std::pair<T, int>(0, 0);
 		T max = extended_array[0], cmax = 0, rmax = 0;
 		for (int i = 0; i < _size; i++) 
 		{
@@ -77,5 +97,20 @@ public:
 			}
 		}
 		return std::pair<T, int>(max, rmax);
+	}
+
+	int checkSum(){
+		if (typeid(extended_array) != typeid(std::vector<bool>) && typeid(extended_array) != typeid(std::vector<int>))
+			throw std::bad_typeid();
+		int counti{0};
+		for (size_t i = 0; i < _size; i++)
+		{
+			if (extended_array[i] != 0 && extended_array[i] != 1)
+				throw std::logic_error("Разрешены только 1 и 0 в качестве элементов массива");
+			counti += (extended_array[i] == 1);
+		}
+		if (_size == 0)
+			return 0;
+		return counti;
 	}
 };
