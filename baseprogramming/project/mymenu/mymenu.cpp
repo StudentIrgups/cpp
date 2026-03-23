@@ -8,7 +8,7 @@ mymenu::menu::menu() {
     int gvehicle_size = sizeof(gvehicles) / sizeof(gvehicles[0]);
     int avehicle_size = sizeof(avehicles) / sizeof(avehicles[0]);
 
-    delete[] arrVehicles;
+    //delete[] arrVehicles;
     arrVehicles_size = gvehicle_size + avehicle_size;
     arrVehicles = new std::string[arrVehicles_size];
 

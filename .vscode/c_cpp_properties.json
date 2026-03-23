@@ -3,6 +3,7 @@
         {
             "name": "CPP_BP_PROJECT",
             "includePath": [
+                "${workspaceFolder}/cpp/baseprogramming/project/**",
                 "${workspaceFolder}/cpp/baseprogramming/project/mymenu/",
                 "${workspaceFolder}/cpp/baseprogramming/project/processor/**",
                 "${workspaceFolder}/cpp/baseprogramming/project//vehicle/**"

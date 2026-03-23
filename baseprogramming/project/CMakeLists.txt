@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.6)
+cmake_minimum_required(VERSION 3.22.1)
 
 project(baseProgrammingProject VERSION 0.1.0 LANGUAGES CXX)
 
@@ -13,11 +13,6 @@ include_directories(
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON) 
 
-add_library(menu SHARED 
-    mymenu/mymenu.h 
-    mymenu/mymenu.cpp 
-)
-
 add_library(vehicles SHARED 
     vehicle/vehicle.h 
     vehicle/vehicle.cpp 
@@ -27,10 +22,19 @@ add_library(vehicles SHARED
     vehicle/ground/ground.cpp
 )
 
+add_library(menu SHARED 
+    mymenu/mymenu.h 
+    mymenu/mymenu.cpp 
+)
+
 add_library(processor SHARED 
     processor/processor.h
     processor/processor.cpp
 )
+
+target_link_libraries(menu vehicles)
+
+target_link_libraries(processor vehicles)
 
 add_executable(main main.cpp)
 
