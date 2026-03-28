@@ -1,5 +1,15 @@
 #include "mymenu.h"
 #include <limits>
+#include <algorithm>
+
+struct processed {
+    vehicle_space::vehicle ovehicle;
+    float  calced;
+};
+
+bool customComparison(processed a, processed b) {
+    return a.calced < b.calced;
+}
 
 int main(void) {
     std::cout << Hello << std::endl;
@@ -39,7 +49,8 @@ int main(void) {
         std::system("clear");
         std::string reged{""};
         std::cout << NeedNoLessThenTwoTypesOfVehilces << std::endl;
-        int action1{0};
+        int action1{0};       
+
         do {
             std::cout << RegistrationVehicle << std::endl;
             if (omenu->get_reged_size() > 2) {
@@ -66,6 +77,10 @@ int main(void) {
                     std::cin >> action1;
                     std::system("clear");
                     if (action1 != static_cast<int>(actions::RegistrationStop)) {
+                        if (action1 > arrvehicles_size) {
+                            std::cout << NoSuchTypeVehicle << std::endl;
+                            continue;
+                        }
                         std::string res = omenu->add_to_reg(action1-1);
                         if (res == "1") {
                             std::cout << omenu->get_last() << RegistrationSuccess << std::endl;
@@ -80,12 +95,22 @@ int main(void) {
                 } while (action1 != 0);      
             } else if (action1 == static_cast<int>(actions::StartRace)) {
                 std::cout << Results << std::endl;
+                processed oprocessed[omenu->get_reged_size() - 1];
 
                 for (int i = 0; i < omenu->get_reged_size() - 1; ++i) {
                     processor::processor oprocessor;
                     vehicle_space::vehicle ovehicle = omenu->get_reged()[i];
-                    std::cout << i + 1 << ". " << ovehicle.get_name() << ". " << Time << oprocessor.process(omenu->get_reged()[i], dis) << std::endl;
+                    oprocessed[i].ovehicle = ovehicle;
+                    oprocessed[i].calced   = oprocessor.process(omenu->get_reged()[i], dis);
+                    //std::cout << i + 1 << ". " << ovehicle.get_name() << ". " << Time << oprocessor.process(omenu->get_reged()[i], dis) << std::endl;
                 }               
+
+                std::sort(&oprocessed[0], &oprocessed[omenu->get_reged_size() - 1], customComparison);
+
+                for (int i = 0; i < omenu->get_reged_size() - 1; ++i) {
+                    std::cout << i + 1 << ". " << oprocessed[i].ovehicle.get_name() << ". " << Time << oprocessed[i].calced << std::endl;
+                }  
+
                 std::cout << std::endl;
                 std::cout << AnotherRace << std::endl << Exit << std::endl; 
                 std::cout << ChooseAction;

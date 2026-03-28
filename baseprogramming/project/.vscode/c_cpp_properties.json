@@ -3,13 +3,14 @@
         {
             "name": "CPP_BP_PROJECT",
             "includePath": [
+                "${workspaceFolder}/**",
                 "${workspaceFolder}/cpp/baseprogramming/project/**",
-                "${workspaceFolder}/cpp/baseprogramming/project/mymenu/",
+                "${workspaceFolder}/cpp/baseprogramming/project/mymenu/**",
                 "${workspaceFolder}/cpp/baseprogramming/project/processor/**",
-                "${workspaceFolder}/cpp/baseprogramming/project//vehicle/**"
+                "${workspaceFolder}/cpp/baseprogramming/project/vehicle/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-clang-x64",
