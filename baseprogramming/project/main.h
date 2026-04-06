@@ -55,3 +55,4 @@ enum class actions {
 #define AnotherRace "1. Провести ещё одну гонку"
 #define Exit "2. Выход"
 #define NoThisType "Нет такого типа гонки"
+#define NoSuchTypeVehicle "Нет такого транспорта\n"
