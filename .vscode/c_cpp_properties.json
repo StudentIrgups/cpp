@@ -6,7 +6,7 @@
                 "${workspaceFolder}/cpp/baseprogramming/project/**",
                 "${workspaceFolder}/cpp/baseprogramming/project/mymenu/",
                 "${workspaceFolder}/cpp/baseprogramming/project/processor/**",
-                "${workspaceFolder}/cpp/baseprogramming/project//vehicle/**"
+                "${workspaceFolder}/cpp/baseprogramming/project/vehicle/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
