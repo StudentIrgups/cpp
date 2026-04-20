@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project("algorithms hw1" VERSION 0.1.0 LANGUAGES CXX)
+project("algorithms hw2" VERSION 0.1.0 LANGUAGES CXX)
 
 set(PROJECT_NAME
     main
