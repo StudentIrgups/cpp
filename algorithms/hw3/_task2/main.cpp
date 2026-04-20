@@ -2,56 +2,38 @@
 #include <iostream>
 #include <ctime>
 
-int pivoting(int * arr, int pi, int len) {
+int pivoting(int* arr, int len) {
+    int pi = std::rand() % len;
+    int pivot = arr[pi];
+    
     int left = 0;
     int right = len - 1;
-    int pivot = arr[pi];
-
-    while (true) {
+    
+    while (left <= right) {
         while (arr[left] < pivot) 
-            left += 1;
+            ++left;
         while (arr[right] > pivot)
-            right -= 1;
-        if (left >= right) 
-            return left;
-        std::swap(arr[left], arr[right]);
-        left += 1;
-        right -= 1;
+            --right;
+        if (left <= right) {
+            std::swap(arr[left], arr[right]);
+            ++left;
+            --right;
+        }
     }
+    return left - 1; 
 }
 
 void quick_sort(int* arr, int len) {
-    if (len <= 1)
+    if (len <= 1) 
         return;
-    int pi = std::rand() % len;
-    int border = pivoting(arr, pi, len);
 
-    if (border == 0)
-        border = 1;
+    int border = pivoting(arr, len);
     
-        if (border == len)
-        border = len - 1;
-
-    int * arr_a = new int[border]();
-
-    for (int i = 0; i < border; ++i)
-        arr_a[i] = arr[i];
-
-    int * arr_b = new int[len - border]();
-
-    for (int i = 0; i < len - border; ++i)
-        arr_b[i] = arr[i + border];        
-
-    quick_sort(arr_a, border);
-    quick_sort(arr_b, len - border);
-
-    for (int i = 0; i < border; ++i)
-        arr[i] = arr_a[i];
-    for (int i = 0; i < len - border; ++i)
-        arr[border + i] = arr_b[i];
-
-    delete[] arr_a;
-    delete[] arr_b;    
+    if (border < 0) border = 0;
+    if (border >= len) border = len - 1;
+    
+    quick_sort(arr, border + 1);          
+    quick_sort(arr + border + 1, len - border - 1);  
 }
 
 int main(void) {
