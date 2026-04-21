@@ -1,16 +1,17 @@
-# 1
+# 1 Merge sort
 
 [main.cpp](./_task1/main.cpp)
 
-Время O(2^n) — экспоненциальная
-Память O(n) — линейная (глубина стека)
-
 ![alter](./_task1/images/0.png)
 
-# 2
+# 2 Quick sort
 
 [main.cpp](./_task2/main.cpp)
 
-Для 40 действительно работает гораздо быстрее.
+![alter](./_task2/images/0.png)
 
-![alter](./_task1/images/0.png)
+# 3 Count sort
+
+[main.cpp](./_task3/main.cpp)
+
+![alter](./_task3/images/0.png)
