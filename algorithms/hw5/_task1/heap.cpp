@@ -74,7 +74,7 @@ void heap::print_pyramid() {
         int level = 0;
         int temp = i + 1;
         while (temp > 1) {
-            temp >>= 1;
+            temp /= 2;
             ++level;
         }
         std::string relation = (i % 2 == 1) ? "left" : "right";
