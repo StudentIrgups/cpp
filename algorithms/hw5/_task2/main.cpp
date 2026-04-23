@@ -3,7 +3,7 @@
 int main(void) {
     heapWalk * _heapWalk = new heapWalk;
     
-    int arr[] = {1, 3, 6, 5, 9, 8};
+    int arr[] = {94, 67, 18, 44, 55, 12, 6, 42};
     int size = sizeof(arr)/sizeof(arr[0]);
 
     for (int i = 0; i < size; ++i) {
