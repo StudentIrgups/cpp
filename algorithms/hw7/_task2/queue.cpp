@@ -20,7 +20,7 @@ int _queue::pop() {
 }
 
 bool _queue::is_empty() {
-    return (curr == 0);
+    return (curr <= 0);
 }
 
 _queue::~_queue(){

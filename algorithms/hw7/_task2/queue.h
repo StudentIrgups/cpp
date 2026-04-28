@@ -5,8 +5,8 @@ class _queue {
     public:
         _queue(int n);
         void push(int e);
-        int pop();
-        bool is_empty();    
+        int pop();    
+        bool is_empty();   
         ~_queue();
     protected:    
     private:
