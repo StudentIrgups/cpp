@@ -43,34 +43,41 @@ void heap::add(vw elem) {
 }
 
 void heap::shif_down(int idx) {
-    if (idx == size - 1 || size == 0)
-        return;
-    int min_child = left_index(idx);
-    if (size > 2 && arr[left_index(idx)].weight > arr[right_index(idx)].weight) {
-        min_child = right_index(idx);
-    }
-    if (arr[idx].weight > arr[min_child].weight) {
-        std::swap(arr[idx], arr[min_child]);
-        shif_down(min_child);
+    while (true) {  
+        int smallest = idx;
+        int left = left_index(idx);
+        int right = right_index(idx);
+        
+        if (left < size && arr[left].weight < arr[smallest].weight) {
+            smallest = left;
+        }
+        
+        if (right < size && arr[right].weight < arr[smallest].weight) {
+            smallest = right;
+        }
+        
+        if (smallest != idx) {
+            std::swap(arr[idx], arr[smallest]);
+            idx = smallest;
+        } else {
+            break;
+        }
     }
 }
 
 int heap::extract_min() {
-    if (size == 0)
-        return -1;
-    int mine = arr[0].vertex;
-    arr[0] = arr[size-1];
+    if (size == 0) return -1;
+    
+    int min_vertex = arr[0].vertex;
+    
+    std::swap(arr[0], arr[size - 1]);
     size--;
-    vw * new_arr = new vw[size]();
-
-    for (int i = 0; i < size; ++i) {
-        new_arr[i] = arr[i];
+    
+    if (size > 0) {
+        shif_down(0);
     }
-    delete arr;
-    arr = new_arr;
-    shif_down(0);
-
-    return mine;
+    
+    return min_vertex;
 }
 
 bool heap::is_empty(){
