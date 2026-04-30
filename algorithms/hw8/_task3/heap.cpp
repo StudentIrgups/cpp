@@ -1,8 +1,8 @@
 #include "heap.h"
 
-heap::heap() {
+heap::heap(int cap) : capacity(cap) {
     size = 0;
-    arr  = nullptr;
+    arr = new vw[capacity];
 }
 
 int heap::left_index(int parent_idx) {
@@ -28,18 +28,32 @@ void heap::try_up(int idx) {
     }
 }
 
+void heap::shif_up(int idx) {
+    while (idx > 0) {
+        int parent = parent_idx(idx);
+        if (arr[idx].weight < arr[parent].weight) {
+            std::swap(arr[idx], arr[parent]);
+            idx = parent;
+        } else {
+            break;
+        }
+    }
+}
+
 void heap::add(vw elem) {
-    vw * new_arr = new vw[size + 1]();
-    for (int i = 0; i < size; ++i) {
-        new_arr[i] = arr[i];
+    if (size >= capacity) {
+        capacity *= 2;
+        vw * new_arr = new vw[capacity]();
+        for (int i = 0; i < size; ++i) {
+            new_arr[i] = arr[i];            
+        }
+        delete[] arr;
+        arr = new_arr;
     }
 
-    new_arr[size] = elem;
-
-    delete[] arr;
-    arr = new_arr;    
+    arr[size] = elem;     
+    shif_up(size);
     ++size;
-    try_up(size-1);
 }
 
 void heap::shif_down(int idx) {
