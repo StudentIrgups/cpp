@@ -73,6 +73,10 @@ int heap::extract_min() {
     return mine;
 }
 
+bool heap::is_empty(){
+    return (size == 0);
+}
+
 heap::~heap() {
     delete[] arr;
 }

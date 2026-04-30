@@ -18,6 +18,7 @@ class heap {
         void try_up(int idx);
         void shif_down(int idx);
         int extract_min();
+        bool is_empty();
         ~heap();
     private:
         vw * arr{0};
