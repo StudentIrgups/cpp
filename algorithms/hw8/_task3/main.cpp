@@ -18,13 +18,25 @@ int main(void) {
                     file_in >> graph[i][j];
                 }
             }        
-            dijkstra(graph, n, 4);
-                     
+            int * done = new int[n]();
+            
+            
+            for (int i = 0; i < n; ++i) {    
+                dijkstra(graph, n, i, done);            
+                for (int k = 0; k < n; ++k) {                   
+                    if (done[k] != 0) {
+                        std::cout << "Из " << i+1 << " в " << k+1 << " = " << done[k] << std::endl;                        
+                        done[k] = 0;
+                    }
+                }                        
+            }
+            
             std::cout << std::endl;
             for (int i = 0; i < n; ++i) {
                 delete[] graph[i];
             }
-            delete[] graph;        
+            delete[] graph;     
+            delete[] done;   
         }
         file_in.close();
     }
