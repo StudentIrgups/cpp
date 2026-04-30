@@ -46,7 +46,7 @@ void heap::shif_down(int idx) {
     if (idx == size - 1 || size == 0)
         return;
     int min_child = left_index(idx);
-    if (arr[left_index(idx)].weight > arr[right_index(idx)].weight) {
+    if (size > 2 && arr[left_index(idx)].weight > arr[right_index(idx)].weight) {
         min_child = right_index(idx);
     }
     if (arr[idx].weight > arr[min_child].weight) {

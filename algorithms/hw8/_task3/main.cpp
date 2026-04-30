@@ -1,6 +1,7 @@
 #include "main.h"
 
 int main(void) {
+    char chrs[] = {'A', 'B', 'C', 'D', 'E'};
     std::ifstream file_in("input.txt");
     if (file_in.is_open()) {
         int c{0};
@@ -24,7 +25,7 @@ int main(void) {
                 dijkstra(graph, n, i, done);            
                 for (int k = 0; k < n; ++k) {                   
                     if (done[k] != 0) {
-                        std::cout << "Из " << i+1 << " в " << k+1 << " = " << done[k] << std::endl;                        
+                        std::cout << "Из " << chrs[i] << " в " << chrs[k] << " = " << done[k] << std::endl;                        
                         done[k] = 0;
                     }
                 }                        

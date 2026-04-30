@@ -17,3 +17,15 @@
 [dfs.cpp](./_task2/dfs.cpp)
 
 ![alter](./_task2/images/0.png)
+
+# Dijkstra
+
+[dijkstra.cpp](./_task3/dijkstra.cpp)
+
+![alter](./_task3/images/0.png)
+
+![alter](./_task3/images/1.png)
+
+![alter](./_task3/images/2.png)
+
+![alter](./_task3/images/3.png)
