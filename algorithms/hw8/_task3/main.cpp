@@ -19,8 +19,7 @@ int main(void) {
                 }
             }        
             int * done = new int[n]();
-            
-            
+                        
             for (int i = 0; i < n; ++i) {    
                 dijkstra(graph, n, i, done);            
                 for (int k = 0; k < n; ++k) {                   
