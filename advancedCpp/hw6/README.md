@@ -9,10 +9,3 @@
 [main.cpp](./_task2/main.cpp)
 
 ![alter](./_task2/images/0.png)
-
-# Task 3
-
-[main.cpp](./_task3/main.cpp)
-
-![alter](./_task3/images/0.png)
-
