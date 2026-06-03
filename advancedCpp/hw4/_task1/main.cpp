@@ -6,16 +6,16 @@ T power(T a) {
     return a * a;
 }
 
-template <>
-std::vector<int> power(std::vector<int> a) {
+template <typename T>
+std::vector<T> power(std::vector<T> a) {
     for (auto &it:a)
         it *= it;
     return a;
 }
 
-// Вспомогательная функция для вывода вектора
-void printVector(const std::vector<int>& vec) {
-    for (int val : vec) {
+template <typename T>
+void printVector(const std::vector<T>& vec) {
+    for (T val : vec) {
         std::cout << val << " ";
     }
     std::cout << std::endl;
