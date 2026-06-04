@@ -10,3 +10,5 @@
 
 ![alter](./_task2/images/0.png)
 
+![alter](./_task2/images/1.png)
+
