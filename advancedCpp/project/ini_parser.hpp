@@ -31,6 +31,11 @@ class ini_parser {
                 throw std::runtime_error("Нет переменной: " + sv.substr(pospoint+1));
             }
 
+            // Для string просто возвращаем значение
+            if constexpr (std::is_same_v<T, std::string>) {
+                return var->second;
+            }
+
             std::istringstream iss(var->second);
             T temp;
             iss >> temp;
@@ -40,9 +45,11 @@ class ini_parser {
             }
 
             // Для double дополнительно проверяем, что не осталось мусора
-            char c;
-            if (iss >> c) {
-                throw std::runtime_error("Лишние символы в числе: " + var->second);
+            if (!std::is_same<T, std::string>::value) {
+                char c;
+                if (iss >> c) {
+                    throw std::runtime_error("Лишние символы в числе: " + var->second);
+                }
             }
 
             return temp;
