@@ -11,7 +11,6 @@ class ini_parser {
         void init(std::string filename);
         template<typename T>
         T get_value(std::string sv) {
-            T res;
             int pospoint = sv.find('.');
             if (pospoint == std::string::npos) {
                 throw std::runtime_error("Входящее значение должно иметь вид: sectionN.var");
@@ -31,16 +30,22 @@ class ini_parser {
             if (var == sec->second.end()) {
                 throw std::runtime_error("Нет переменной: " + sv.substr(pospoint+1));
             }
-            std::regex re("\\d+\\.?");
-            if (!std::regex_match(var->second, re) && typeid(res).name() == typeid(int).name()) {
-                std::ostringstream oss;
-                oss << "Запрошен тип " << typeid(res).name() 
-                    << " однако, переменная " << var->first << " не является таковой";
-                throw std::runtime_error(oss.str());
-            }
+
             std::istringstream iss(var->second);
-            iss >> res;
-            return res;
+            T temp;
+            iss >> temp;
+
+            if (iss.fail()) {
+                throw std::runtime_error("Не удалось преобразовать: " + var->second);
+            }
+
+            // Для double дополнительно проверяем, что не осталось мусора
+            char c;
+            if (iss >> c) {
+                throw std::runtime_error("Лишние символы в числе: " + var->second);
+            }
+
+            return temp;
         }
     protected:
         void parse();
