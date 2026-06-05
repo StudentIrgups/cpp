@@ -31,13 +31,15 @@ void ini_parser::parse() {
         
         if (std::regex_match(line, re)) {
             cursec = line;
-            ini[line];            
+            std::transform(cursec.begin(),cursec.end(),cursec.begin(), ::toupper);
+            ini[cursec];            
         } else if (line.find('[') != std::string::npos && line.find(']') != std::string::npos) {
             throw std::runtime_error("Есть скобки, но не [sectionN]");
         } else {            
             size_t pos = line.find('=');
             if (pos != std::string::npos) {
                 std::string key = line.substr(0, pos);
+                std::transform(key.begin(), key.end(), key.begin(), ::toupper);
                 std::string value{""};
                 if (pos + 1 < line.length()) {
                     value = line.substr(pos + 1);
