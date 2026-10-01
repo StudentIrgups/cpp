@@ -127,9 +127,9 @@ void clientManager::deleteClient(int clientId) {
     std::cout << "[OK] Deleted " << r.affected_rows() << " client(s)\n";
 }
 
-void clientManager::findClient(const std::string& query) {
+std::vector<std::tuple<int, std::string, std::string, std::string>> clientManager::findClient(const std::string& query) {
     std::vector<std::tuple<int, std::string, std::string, std::string>> clients;
-
+    
     {
         pqxx::work txn(*connection_);
         pqxx::result r = txn.exec_params(R"(
@@ -154,16 +154,11 @@ void clientManager::findClient(const std::string& query) {
 
     if (clients.empty()) {
         std::cout << "[NOT FOUND] No clients matching: " << query << "\n";
-        return;
-    }
+        return clients;
+    }    
 
     std::cout << "[FOUND] " << clients.size() << " client(s):\n";
-    for (const auto& [id, first, last, email] : clients) {
-        std::cout << "  ID=" << id
-                  << " | " << first << " " << last
-                  << " | " << email << "\n";
-        printPhones(id);
-    }
+    return clients;
 }
 
 void clientManager::printPhones(int clientId) {

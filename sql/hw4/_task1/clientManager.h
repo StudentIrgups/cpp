@@ -1,9 +1,9 @@
 #pragma once
 
 #include <pqxx/pqxx>
-#include <memory>
-#include <optional>
 #include <string>
+#include <vector>
+#include <tuple>
 
 class clientManager {
 public:
@@ -28,7 +28,7 @@ public:
 
     void deletePhone(int clientId, const std::string& phone);
     void deleteClient(int clientId);
-    void findClient(const std::string& query);
+    std::vector<std::tuple<int, std::string, std::string, std::string>> findClient(const std::string& query);
     void printPhones(int clientId);
 
 private:
