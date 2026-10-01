@@ -20,3 +20,13 @@
 
 ![alter](./_task2/images/0.png)
 
+
+## Task 3
+
+[task3 cpp](./_task3/task3.cpp)
+
+[CMakeLists](./_task3/CMakeLists.txt)
+
+![alter](./_task3/images/0.png)
+
+
