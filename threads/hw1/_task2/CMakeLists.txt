@@ -9,6 +9,11 @@ set(PROJECT_NAME
 set(SOURCES 
     task2.cpp
 )
+set(CMAKE_CXX_COMPILER g++-13)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread -g -O1")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=thread")
+
+find_package(Threads REQUIRED)
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
