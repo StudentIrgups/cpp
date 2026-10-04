@@ -15,29 +15,35 @@ Client::Client() {
         close(sock);
         return;
     }    
-}
 
-void Client::send_data() {
     if (connect(sock, (sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
         std::cerr << "Ошибка connect: " << strerror(errno) << std::endl;
         close(sock);
         return;
     }
+}
 
+void Client::send_data() {
     std::cout << "Подключено к " << server_ip << ":" << server_port << std::endl;
+    int pckg = 0;
+    while (++pckg < 30) {
+        std::ostringstream oss;
+        oss << "Пакет " << pckg << "client num: ";
+        std::string message = oss.str();
+        send(sock, message.c_str(), message.size(), 0);
 
-    std::string message = "client num 1";
-    send(sock, message.c_str(), message.size(), 0);
-
-    char buffer[32] = {0};
-    ssize_t received = recv(sock, buffer, sizeof(buffer), 0);
-    if (received > 0) {
-        buffer[received] = '\0';
-        std::cout << "Ответ сервера: " << buffer << std::endl;
-    } else if (received == 0) {
-        std::cout << "Сервер закрыл соединение" << std::endl;
-    } else {
-        std::cerr << "Ошибка recv: " << strerror(errno) << std::endl;
+        char buffer[32] = {0};
+        
+        ssize_t received = recv(sock, buffer, sizeof(buffer), 0);
+        if (received > 0) {
+            buffer[received] = '\0';
+            std::cout << "Ответ сервера: " << buffer << std::endl;
+        } else if (received == 0) {
+            std::cout << "Сервер закрыл соединение" << std::endl;
+        } else {
+            std::cerr << "Ошибка recv: " << strerror(errno) << std::endl;
+        }
+        sleep(10);        
     }
     shutdown(sock, SHUT_RDWR);
 }

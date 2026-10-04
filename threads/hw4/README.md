@@ -1,6 +1,8 @@
 ## Task 1
 
-[task1 cpp](./_task1/task1.cpp)
+[server](./_task1/task1_serv.cpp)
+
+[client](./_task1/task1_cli.cpp)
 
 [CMakeLists](./_task1/CMakeLists.txt)
 
@@ -8,7 +10,9 @@
 
 ## Task 2
 
-[task2 cpp](./_task2/task2.cpp)
+[server](./_task2/task2_serv.cpp)
+
+[client](./_task2/task2_cli.cpp)
 
 [CMakeLists](./_task2/CMakeLists.txt)
 

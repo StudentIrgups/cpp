@@ -1,4 +1,3 @@
-#pragma once
 #include "server.h"
 
 Server::Server() {
@@ -23,7 +22,7 @@ Server::~Server(){
     close(sock);
 }
 
-void Server::recieve_and_answer() {
+void Server::recieve_and_answer() {    
     cout << "Ждём данные от клиента ..." << std::endl;
 
     if (listen(sock, BACKLOG) < 0) {
@@ -31,15 +30,25 @@ void Server::recieve_and_answer() {
         return;
     }
 
-    socklen_t client_len = sizeof(client_addr);
-    int client_sock = accept(sock, (sockaddr*)&client_addr, &client_len);
+    while (true) {   
+        sockaddr_in client_addr{};
 
-    if (client_sock < 0) {
-        std::cerr << "Ошибка accept: " << strerror(errno) << std::endl;
-        return;
+        socklen_t client_len = sizeof(client_addr);
+        int client_sock = accept(sock, (sockaddr*)&client_addr, &client_len);
+
+        if (client_sock < 0) {
+            std::cerr << "Ошибка accept: " << strerror(errno) << std::endl;
+            continue;
+        }
+        std::thread(clithread, client_sock, client_addr).detach();
     }
 
+}
+
+void Server::clithread(int client_sock, sockaddr_in client_addr) {
+    char buffer[32] = {0};
     char client_ip[INET_ADDRSTRLEN];
+
     inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
     cout << "Клиент подключён: " << client_ip << ":" << ntohs(client_addr.sin_port) << std::endl;
     ssize_t received;
@@ -53,7 +62,12 @@ void Server::recieve_and_answer() {
 
             std::string response = "Echo: " + std::string(buffer);
             send(client_sock, response.c_str(), response.size(), 0);
-            cout << "Отправлено клиенту: " << response << std::endl;
+            
+            size_t id_num = std::hash<std::thread::id>{}(std::this_thread::get_id());
+            std::string id_str = std::to_string(id_num);
+
+            cout << "Отправлено клиенту: " << response << id_str << std::endl;
+
         } else if (received == 0) {
             std::cout << "Клиент закрыл соединение" << std::endl;
             break;
@@ -65,3 +79,4 @@ void Server::recieve_and_answer() {
     shutdown(client_sock, SHUT_RDWR);
     close(client_sock);
 }
+

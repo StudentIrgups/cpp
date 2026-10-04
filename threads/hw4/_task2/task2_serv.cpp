@@ -1,13 +1,16 @@
 #include <iostream>
-#include "client.h"
+#include "server.h"
 #include <random>
 
 int main() {
     std::mt19937 gen(std::random_device{}());
     std::uniform_int_distribution<int> elem(50, 150);
+    
+    int n = 10;
+    std::vector<int> vec(n);
 
-    Client client;
-    client.send_data();
+    Server serv;
+    serv.recieve_and_answer();
     
     return 0;
 }
