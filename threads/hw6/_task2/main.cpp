@@ -7,7 +7,7 @@ int main() {
     SqlSelectQueryBuilder qb1;
     qb1.AddColumn("name").AddColumn("phone");
     qb1.AddFrom("students");
-    qb1.AddWhere("id", "42").AddWhere("name", "John");
+    qb1.AddWhere("id", "42").AddWhere("name", "Alex");
     std::cout << "Запрос 1: " << qb1.BuildQuery() << std::endl;
 
     SqlSelectQueryBuilder qb2;
@@ -20,7 +20,7 @@ int main() {
     qb3.AddFrom("students");
     qb3.AddWhere(std::map<std::string, std::string>{
         {"id", "42"},
-        {"name", "John"},
+        {"name", "Alex"},
         {"age", "20"}
     });
     std::cout << "Запрос 3: " << qb3.BuildQuery() << std::endl;
@@ -31,7 +31,7 @@ int main() {
        .AddFrom("students")
        .AddWhere("id", "42")
        .AddWhere(std::map<std::string, std::string>{
-           {"name", "John"},
+           {"name", "Alex"},
            {"city", "Moscow"}
        });
     std::cout << "Запрос 4: " << qb4.BuildQuery() << std::endl;
